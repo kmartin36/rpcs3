@@ -638,7 +638,7 @@ static error_code vdecOpen(ppu_thread& ppu, T type, U res, vm::cptr<CellVdecCb> 
 
 	// Run thread
 	vm::var<u64> _tid;
-	vm::var<char[]> _name = vm::make_str("HLE Video Decoder");
+	vm::cptr<char> _name = vm::make_str("HLE Video Decoder");
 	ppu_execute<&sys_ppu_thread_create>(ppu, +_tid, 0x10000, vid, +res->ppuThreadPriority, +res->ppuThreadStackSize, SYS_PPU_THREAD_CREATE_INTERRUPT, +_name);
 	*handle = vid;
 
